@@ -64,7 +64,7 @@ namespace HelloWorld
             // 0 1 2 3 4 5  6  7  8 9 - indexes
             // 0 2 4 6 8 10 12 14 16...
 
-            string res  = String.Join(',', evenNumbers);
+            string res  = String.Join(',', evenNumbers);     
 
             Console.WriteLine(res);
 
