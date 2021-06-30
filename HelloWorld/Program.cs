@@ -38,17 +38,54 @@ namespace HelloWorld
 
             Console.WriteLine($"a = {a}");
 
-
-            for (int i = 0; i <= 100; i++)
+            int count = 100;
+            int line = 15;
+            for (int i = 1; i <= count; i++)
             {
-                Console.Write($"{i}, ");
-                if (i == 100)
-                    Console.Write($"{i}.");
-                if (i % 15 == 0)
+                /*
+                 * here is a logic
+                 */
+                //Console.Write($"{i}, ");
+                //if (i == count)
+                //    Console.Write($"{i}.");
+                //else
+                //    Console.Write($"{i}, ");
+                Console.Write($"{i}{(i == count ? "." : ", ")}");
+
+                if (i % line == 0)
                     Console.WriteLine();
 
             }
 
+            Console.WriteLine("\n==================================\n");
+            // Arrays
+            int[] evenNumbers = new int[10];
+            // 0 0 0 0 0 0  0  0  0 0 - array
+            // 0 1 2 3 4 5  6  7  8 9 - indexes
+            // 0 2 4 6 8 10 12 14 16...
+
+            string res  = String.Join(',', evenNumbers);
+
+            Console.WriteLine(res);
+
+            for (int i = 0; i < evenNumbers.Length; ++i)
+            {
+                evenNumbers[i] = i * 2;
+                //Console.Write(evenNumbers[i] + " ");
+            }
+
+            //res = String.Join(',', evenNumbers);
+            Console.WriteLine(String.Join(',', evenNumbers) + ".");
+
+            //foreach (var el in evenNumbers)
+            //{
+            //    Console.Write($"{el} ");
+            //}
+
+
+            string[] arrStr = { "1", "2", "Fizz", "\n4", "Buzz"};
+
+            Console.WriteLine(string.Join(", ", arrStr) + ".");
         }
     }
 }
