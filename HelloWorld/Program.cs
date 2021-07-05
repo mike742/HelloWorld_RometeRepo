@@ -9,6 +9,15 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
+            var k = Task_01.Similarity(
+                new int[] { 0, 1, 3, 4, 5, 6, 9, 14, 15, 16, 17, 18, 19 }, 
+                new int[] { 1, 4, 10, 12, 13, 14, 15, 16 });
+                
+            //Task_01.Similarity(new int[] { 1, 2, 4, 6, 7 }, new int[] { 2, 3, 4, 7 });
+
+            Console.WriteLine($"k = {k}");
+
+
             /*
             Console.WriteLine("Enter your first name:");
             string firstName = Console.ReadLine();
@@ -45,9 +54,9 @@ namespace HelloWorld
             int c = 255;
             Console.WriteLine($"c = {c:X}");
             */
-            const int w = 7;
-            Console.WriteLine($"|{"sbyte",-w}|{sizeof(sbyte),w}|{sbyte.MinValue,w}|{sbyte.MaxValue,w}|");
-            Console.WriteLine($"|{"int",-w}|{sizeof(int),w}|{int.MinValue,w}|{int.MaxValue,w}|");
+            //const int w = 7;
+            //Console.WriteLine($"|{"sbyte",-w}|{sizeof(sbyte),w}|{sbyte.MinValue,w}|{sbyte.MaxValue,w}|");
+            //Console.WriteLine($"|{"int",-w}|{sizeof(int),w}|{int.MinValue,w}|{int.MaxValue,w}|");
         }
     }
 }

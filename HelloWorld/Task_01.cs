@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace HelloWorld
 {
@@ -35,13 +36,33 @@ namespace HelloWorld
         Similarity(new int[]{1, 2, 4, 6, 7},new int[]{2, 3, 4, 7}); // 0.5
         Similarity(new int[]{1, 2, 6, 8, 9},new int[]{0, 1, 4, 5, 6, 8, 9}); // 0.5
         Similarity(new int[]{1, 2, 3, 4, 7, 9},new int[]{1, 2, 3}); // 0.5
-        Similarity(new int[]{0, 1, 3, 4, 5, 6, 9, 14, 15, 16, 17, 18, 19},new int[]{1, 4, 10, 12, 13, 14, 15, 16}) // 0.3125;
+        Similarity(new int[]{0, 1, 3, 4, 5, 6, 9, 14, 15, 16, 17, 18, 19},
+        new int[]{1, 4, 10, 12, 13, 14, 15, 16}) // 0.3125;
          */
         public static double Similarity(int[] a, int[] b)
         {
-            //coding and coding..
+            int res1 = 0, res2 = 0;
 
-            return 0;
+            /*
+            foreach (int el in a)
+            {
+                if (b.Contains(el))
+                {
+                    res1++;
+                }
+
+                res2 = a.Length + b.Length - res1;
+            }
+
+            Console.WriteLine($"res1 = {res1}");
+            Console.WriteLine($"res2 = {res2}");
+            */
+
+            //Console.WriteLine(a.Intersect(b).ToArray().Length);
+            Console.WriteLine(string.Join(", ", a.Intersect(b).ToArray()));
+            Console.WriteLine(string.Join(", ", a.Union(b).ToArray()));
+
+            return (double)a.Intersect(b).ToArray().Length / a.Union(b).ToArray().Length;
         }
     }
 }
