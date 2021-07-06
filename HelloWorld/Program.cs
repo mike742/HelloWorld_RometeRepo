@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Linq;
 using static System.Console;
 
@@ -9,53 +10,70 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            string str = "123456hello";
-            // int intValue1 = Int32.Parse(str);
-            // WriteLine($"intValue1 = {intValue1}");
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.File("app.log")
+                .CreateLogger();
 
-            int intValue2;
-            bool res = Int32.TryParse(str, out intValue2);
+            Log.Information("Hello world!");
+            Log.Fatal("Really Bad!!");
+            Log.Error("An Error");
 
-            if (res)
+
+            // Task_02.SortByHeight(new int[] { -1, 150, 190, 170, -1, -1, 160, 180 });
+            Console.WriteLine(string.Join(", ", Task_02.SortByHeight(null)));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try
             {
-                WriteLine($"intValue2 = {intValue2}");
+                string input = "12333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333";
+                int intInput1 = Int32.Parse(input);
+
+                if (intInput1 < 0 || intInput1 > 255)
+                    throw new ArgumentOutOfRangeException();
+
+
+                input = "0";
+                int intInput2 = Int32.Parse(input);
+
+
+                WriteLine(intInput1 / intInput2);
             }
-            else
-                WriteLine("Something wrong");
-
-            int i = 1;
-            RefMethod(ref i);
-            WriteLine($"i = {i}");
-
-            OutMethod(out i);
-            WriteLine($"i = {i}");
-
-            double pi = 3.14;
-            int r = 10;
-
-            InMethod(r, in pi);
-
-
-            int[] arr = { 4, 1, 7, 2, 9, 3 };
-            Array.Sort(arr);
-
-            WriteLine(  string.Join(", ", arr) );
-        }
-
-        static void RefMethod(ref int a)
-        {
-            //a = 77;
-        }
-
-        static void OutMethod(out int a)
-        {
-            a = 777;
-        }
-
-        static void InMethod(int r, in double pi)
-        {
-            // pi = 3.15;
-            WriteLine(r * r * pi);
+            catch (ArgumentOutOfRangeException e)
+            {
+                WriteLine(e.Message);
+            }
+            catch (FormatException e)
+            {
+                WriteLine(e.Message);
+            }
+            catch (DivideByZeroException e)
+            {
+                WriteLine(e.Message);
+            }
+            catch (ArgumentNullException e)
+            {
+                WriteLine("Null Arg");
+            }
+            catch (OverflowException e)
+            {
+                WriteLine("Your number was toooooooooooooooooo big");
+            }
+            catch (Exception e)
+            {
+                WriteLine("Something wrong!!!!");
+            }
         }
     }
 }

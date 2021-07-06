@@ -1,4 +1,10 @@
-﻿namespace HelloWorld
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+namespace HelloWorld
 {
     class Task_02
     {
@@ -9,7 +15,33 @@
         */
         public static int[] NoOdds(int[] values)
         {
-            return null;
+            //var res = (from v in  values
+            //             where v % 2 == 0
+            //             select v).ToArray();
+
+            var res2 = values.Where(v => v % 2 == 0).ToArray();
+
+            Console.WriteLine(string.Join(", ", res2));
+            /*
+            // 1. number of evens
+            int noe = 0;
+            foreach (int el in values)
+            {
+                if (el % 2 == 0)
+                    noe++;
+            }
+
+            // 2. Array[noe]
+            int[] res = new int[noe];
+            for (int i = 0, j = 0; i < values.Length; ++i)
+            {
+                if (values[i] % 2 == 0)
+                    res[j++] = values[i];
+            }
+
+            Console.WriteLine( string.Join(", ", res) );
+            */
+            return values.Where(v => v % 2 == 0).ToArray();
         }
 
 
@@ -26,7 +58,27 @@
 
         public static int[] SortByHeight(int[] a)
         {
-            return null;
+            string logFile = "test1.log";
+
+            try
+            {
+                var arr = a.Where(e => e != -1).ToArray();
+                Array.Sort(arr);
+
+                for (int i = 0, j = 0; i < a.Length; ++i)
+                {
+                    if (a[i] != -1)
+                    {
+                        a[i] = arr[j++];
+                    }
+                }
+                return a;
+            }
+            catch (Exception e)
+            {
+                File.AppendAllText(logFile, e.Message);
+            }
+            return new int[] { };
         }
     }
 }
