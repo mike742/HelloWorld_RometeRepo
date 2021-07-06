@@ -1,15 +1,40 @@
 ﻿using Serilog;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
 
 
 namespace HelloWorld
 {
-    class Program
+    public class Program
     {
+        public static string primeFactors(int number)
+        {
+            var primes = new List<int>();
+
+            for (int div = 2; div <= number; div++)
+            {
+                while (number % div == 0)
+                {
+                    primes.Add(div);
+                    number = number / div;
+                }
+            }
+
+            return string.Join(" x ", primes);
+        }
+
         static void Main(string[] args)
         {
+
+            //WriteLine( primeFactors(4)); // 2 x 2
+            //WriteLine( primeFactors(7)); // 7
+            WriteLine( primeFactors(0)); 
+
+
+
+
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.File("app.log")
                 .CreateLogger();
