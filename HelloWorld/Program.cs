@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shapes;
+using System;
 
 namespace HelloWorld
 {
@@ -46,52 +47,18 @@ namespace HelloWorld
     }
 
 
-    public class Shape
-    {
-        public double Height { set; get; }
-        public double Width { set; get; }
-        public double Area { get; }
 
-        public void Info()
-        {
-            Console.WriteLine("base class: This is a shape");
-        }
-    }
-
-    public class Rectancle : Shape
-    {
-        public new double Area { get => Height * Width; }
-        public Rectancle(double height, double width)
-        {
-            Height = height;
-            Width = width;
-        }
-
-        public new void Info()
-        {
-            Console.WriteLine("child class: This is a Rectangle");
-        }
-    }
-
-    public class Circle : Shape
-    {
-        public new double Area { get => Math.Pow(Height / 2, 2) * Math.PI; }
-        public Circle(double diameter)
-        {
-            Height = Width = diameter;
-        }
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            Shape r = new Rectancle(20, 15);
+            Shape r = new Rectangle(20, 15);
 
             r.Width = 50;
 
-            Console.WriteLine($"area of r = {((Rectancle)r).Area}");
+            Console.WriteLine($"area of r = {((Rectangle)r).Area}");
 
-            ((Rectancle)r).Info();
+            ((Rectangle)r).Info();
 
 
             Circle c = new Circle(100);
