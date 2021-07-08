@@ -52,10 +52,14 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
+            Shape[] shapes = new Shape[3];
             Shape r = new Rectangle(20, 15);
+
+            shapes[0] = r;
 
             r.Width = 50;
 
+            Console.WriteLine($"area of r = {r.Area}");
             Console.WriteLine($"area of r = {((Rectangle)r).Area}");
 
             ((Rectangle)r).Info();
@@ -64,28 +68,51 @@ namespace HelloWorld
             Circle c = new Circle(100);
             Console.WriteLine($"area of a circle = {c.Area}");
 
+            shapes[1] = c;
+
             Console.WriteLine("==================================");
 
+            foreach (var shape in shapes)
+            {
+                if (shape != null)
+                {
+                    // Console.WriteLine(shape.GetType().Name + " " + shape.Area);
+                    
+                    if(shape.GetType() == typeof(Rectangle))
+                        Console.WriteLine(((Rectangle)shape).Area);
+                    if (shape.GetType() == typeof( Circle))
+                       Console.WriteLine(((Circle)shape).Area);
+                }
+            }
+            Console.WriteLine("=============== Virtual ===================");
+            ShapeVirtual.Shape shv = new ShapeVirtual.Shape();
 
+            ShapeVirtual.Shape[] shapes2 = new ShapeVirtual.Shape[2];
+            
+            ShapeVirtual.Shape r2 = new ShapeVirtual.Rectangle(5, 7);
+            ShapeVirtual.Shape c2 = new ShapeVirtual.Circle(7);
 
+            shapes2[0] = r2;
+            shapes2[1] = c2;
 
+            foreach (var shape in shapes2)
+            {
+                Console.WriteLine(shape.Area);
+            }
 
+            Console.WriteLine("============== Abstract ====================");
+            ShapeAbstract.Shape[] shapes3 = new ShapeAbstract.Shape[2];
 
+            ShapeAbstract.Shape r3 = new ShapeAbstract.Rectangle(25, 10);
+            ShapeAbstract.Shape c3 = new ShapeAbstract.Circle(50);
 
+            shapes3[0] = r3;
+            shapes3[1] = c3;
 
-
-
-            Customer c1 = new Customer();
-            c1.PrintFullName();
-
-            Console.WriteLine(Customer.GetClassName());
-
-            Customer.SetClassName("Customer class");
-
-            Console.WriteLine(Customer.GetClassName());
-
-            c1.Salary = 1500.55;
-            Console.WriteLine("salary = ${0}", c1.Salary);
+            foreach (var shape in shapes3)
+            {
+                Console.WriteLine(shape.Area);
+            }
         }
     }
 }

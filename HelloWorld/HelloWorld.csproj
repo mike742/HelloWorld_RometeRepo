@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ShapeAbstract\ShapeAbstract.csproj" />
     <ProjectReference Include="..\Shapes\Shapes.csproj" />
+    <ProjectReference Include="..\ShapeVirtual\ShapeVirtual.csproj" />
   </ItemGroup>
 
 </Project>
