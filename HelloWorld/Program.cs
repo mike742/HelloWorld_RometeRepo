@@ -113,6 +113,14 @@ namespace HelloWorld
             {
                 Console.WriteLine(shape.Area);
             }
+
+            // S O L I D
+
+            IAnimal lion = new Lion();
+            // Lion lion2 = new Lion();
+
+            Console.WriteLine( lion.Species );
+            lion.GetDescription();
         }
     }
 }
