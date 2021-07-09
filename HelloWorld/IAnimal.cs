@@ -6,8 +6,6 @@ namespace HelloWorld
 {
     public interface IAnimal
     {
-        int Age { set; get; }
-        string Species { get;}
         void RequestUniqueCharacteristic();
         void GetDescription();
     }

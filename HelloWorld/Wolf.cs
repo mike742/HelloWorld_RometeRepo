@@ -4,12 +4,11 @@ using System.Text;
 
 namespace HelloWorld
 {
-    class Lion : Animal, IAnimal
+    class Wolf : Animal, IAnimal
     {
         public void GetDescription()
         {
-            Console.WriteLine("Species: " + Species + " with mane. " 
-                + Age + " years-old");
+            Console.WriteLine("Species: " + Species + " with speed. " + Age + " years-old");
         }
 
         public void RequestUniqueCharacteristic()
